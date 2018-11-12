@@ -27,7 +27,7 @@ const oidc = new ExpressOIDC({
   issuer: "https://dev-375260.oktapreview.com/oauth2/default",
   client_id: '0oaham3bwjfIsv0DH0h7',
   client_secret: 'vfcp7XcmVMCVDQPu3jbrRS7iprzTYoxMt2g669Ng',
-  redirect_uri: 'http://localhost:3000/callback',
+  redirect_uri: 'https://nik-loclib.herokuapp.com/callback',
   scope: "openid profile",
   routes: {
     login: {
