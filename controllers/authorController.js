@@ -78,14 +78,14 @@ exports.author_create_post = [
         }
         else {
             // Data from form is valid.
-
             // Create an Author object with escaped and trimmed data.
             var author = new Author(
                 {
                     first_name: req.body.first_name,
                     family_name: req.body.family_name,
                     date_of_birth: req.body.date_of_birth,
-                    date_of_death: req.body.date_of_death
+                    date_of_death: req.body.date_of_death,
+                    img:reqimg(req)
                 });
             author.save(function (err) {
                 if (err) { return next(err); }
@@ -95,7 +95,6 @@ exports.author_create_post = [
         }
     }
 ];
-
 
 
 // Display Author delete form on GET.
@@ -166,6 +165,22 @@ exports.author_update_get = function (req, res, next) {
     });
 };
 
+function reqimg(req) {
+var image;
+ if(req.body.imgbot && check(req.body.imgbot))  image=req.body.imgbot;
+ else image=undefined; 
+
+ function check(i) {
+   var yo='';
+   if(i.length>9){
+     for(j=5;j<=9;++j)yo+=i[j];
+     if(yo=='image') return 1;
+   }
+   else return 0;
+ }
+  return image;
+}
+
 // Handle Author update on POST.
 exports.author_update_post = [
 
@@ -196,7 +211,8 @@ exports.author_update_post = [
                 family_name: req.body.family_name,
                 date_of_birth: req.body.date_of_birth,
                 date_of_death: req.body.date_of_death,
-                _id: req.params.id
+		img:reqimg(req),
+                _id: req.params.id                
             }
         );
 
