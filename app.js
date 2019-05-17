@@ -20,7 +20,7 @@ app.use(helmet());
 
 var oktaClient = new okta.Client({
   orgUrl: 'https://dev-375260.oktapreview.com',
-  token: '00QEa2Yx59IztNSd4yaZsgxf0e0qdih-7aeLMeLfP1'
+  token: '00yGoFlJkKgF_2pwKTLk1UYQJWzMbE0SpcE8ZLe_2v'
 });
 
 const oidc = new ExpressOIDC({
